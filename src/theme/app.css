@@ -1,0 +1,564 @@
+* { box-sizing: border-box; }
+body { background: radial-gradient(circle at 30% -10%, rgba(255,255,255,0.12), transparent 30%), linear-gradient(135deg, #080908, #151515 55%, #070807); }
+.tams-screen { --background: radial-gradient(circle at 70% 0%, rgba(30, 215, 96, 0.08), transparent 28%), #050605; }
+.phone-shell, .page-shell { width: min(100%, 760px); min-height: 100%; margin: 0 auto; padding: 34px 16px 120px; color: #f8f8f6; }
+h1, h2, h3, p { margin: 0; }
+.top-bar { display: flex; align-items: center; gap: 12px; min-height: 54px; }
+.brand-lockup { display: flex; align-items: center; gap: 8px; margin-right: auto; }
+.brand-lockup img, .avatar { width: 42px; height: 42px; object-fit: cover; border-radius: 50%; border: 1px solid rgba(255,255,255,0.28); }
+.brand-lockup strong { font-size: 2rem; line-height: 1; letter-spacing: 0; }
+.top-actions { display: flex; align-items: center; gap: 10px; }
+.icon-button { display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border: 0; border-radius: 50%; color: #fff; background: rgba(255,255,255,0.05); }
+.icon-button ion-icon { font-size: 1.35rem; }
+.routine-hero, .active-hero { position: relative; display: grid; grid-template-columns: 1fr 48%; align-items: end; min-height: 190px; overflow: hidden; }
+.routine-hero h1, .active-hero h1, .screen-title h1 { font-size: clamp(2.4rem, 11vw, 4.8rem); line-height: 0.92; font-weight: 950; letter-spacing: 0; }
+.routine-hero p, .active-hero p, .screen-title p, .exercise-line p, .collapsed-exercise p, .rest-card p { color: #b9b9b9; }
+.routine-hero img, .active-hero img { width: 100%; max-height: 220px; object-fit: contain; object-position: bottom right; filter: drop-shadow(0 18px 30px rgba(0,0,0,0.5)); }
+.coach-bubble { position: absolute; right: 115px; top: 18px; max-width: 150px; padding: 12px; border: 1px solid rgba(255,255,255,0.25); border-radius: 18px; background: rgba(20,22,21,0.72); color: #fff; font-weight: 800; }
+.segmented { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 8px; margin: 8px 0 18px; border: 1px solid rgba(255,255,255,0.11); border-radius: 20px; background: rgba(255,255,255,0.05); }
+.segmented button { min-height: 50px; border: 0; border-radius: 16px; color: #aaa; background: transparent; font-weight: 800; }
+.segmented button.active { color: #101010; background: #fff; }
+.section-label { color: #c5c5c5; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.card-list { display: grid; gap: 14px; }
+.routine-card, .tracker-card, .collapsed-exercise, .rest-card, .progress-panel, .guide-hero, .muscle-card, .equipment-card, .how-card, .mistake-card, .tip-card, .coach-tip, .hero-panel, .exercise-card, .empty-state, .stat-grid article, .info-row { border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; background: linear-gradient(145deg, rgba(26,28,27,0.92), rgba(8,9,9,0.92)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.04); }
+.routine-card { position: relative; display: grid; grid-template-columns: 150px 1fr auto; gap: 14px; align-items: center; min-height: 132px; padding: 14px; }
+.routine-card h2, .exercise-line h2, .collapsed-exercise h2 { font-size: clamp(1.45rem, 5vw, 2.1rem); line-height: 1; }
+.routine-card p { color: #b9b9b9; margin-top: 6px; }
+.routine-photo, .mini-photo { height: 102px; border-radius: 14px; background-size: cover; background-position: center; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12); }
+.mini-photo { width: 118px; height: 84px; }
+.bench-photo { background-image: linear-gradient(90deg, rgba(0,0,0,0.2), rgba(0,0,0,0.72)), url('../assets/exercise-guide-reference.png'); }
+.pull-photo { background-image: linear-gradient(135deg, #363636, #0a0a0a 60%); }
+.leg-photo { background-image: radial-gradient(circle at 70% 30%, rgba(30,215,96,0.28), transparent 28%), linear-gradient(135deg, #252525, #050505 65%); }
+.full-photo, .press-photo { background-image: linear-gradient(135deg, #3d3d3d, #0a0a0a 65%); }
+.routine-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 14px; color: #efefef; font-weight: 800; }
+.routine-meta span { display: inline-flex; align-items: center; gap: 6px; }
+.kebab { align-self: start; border: 0; color: #d5d5d5; background: transparent; font-size: 1.8rem; }
+.start-pill, .view-pill { grid-column: 3; --border-radius: 14px; min-width: 132px; font-weight: 950; }
+.view-pill { --color: #41ee84; --border-color: #41ee84; }
+.floating-add { position: fixed; right: max(22px, calc((100vw - 760px) / 2 + 22px)); bottom: 98px; display: grid; place-items: center; gap: 6px; border: 0; color: #d9d9d9; background: transparent; font-weight: 800; }
+.floating-add ion-icon { width: 76px; height: 76px; padding: 8px; border-radius: 50%; color: #07120b; background: #44ef82; }
+.active-hero { grid-template-columns: 1fr 42%; min-height: 190px; }
+.progress-panel { display: grid; gap: 14px; padding: 16px; margin-bottom: 16px; }
+.progress-panel > div:first-child { display: flex; justify-content: space-between; gap: 12px; }
+.meter { height: 24px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,0.13); }
+.meter span { display: block; height: 100%; border-radius: inherit; background: #44ef82; }
+.tracker-card { padding: 16px; margin-bottom: 16px; }
+.exercise-line, .collapsed-exercise { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; }
+.collapsed-exercise, .rest-card { padding: 14px; margin-bottom: 16px; }
+.set-table { display: grid; grid-template-columns: 54px 1fr 108px 112px; align-items: center; gap: 10px; margin-top: 18px; }
+.set-table > span { color: #cfcfcf; font-size: 0.82rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+.set-row { display: contents; }
+.set-row strong, .set-row input, .set-row label { min-height: 58px; display: grid; align-items: center; }
+.set-row input, .set-row label { width: 100%; border: 1px solid rgba(255,255,255,0.22); border-radius: 10px; color: #fff; background: rgba(255,255,255,0.04); font: inherit; font-size: 1.3rem; font-weight: 850; padding: 0 14px; }
+.set-row label { grid-template-columns: 1fr auto; }
+.set-row label input { min-height: 0; padding: 0; border: 0; background: transparent; }
+.set-row em { color: #aaa; font-style: normal; }
+.done-dot { width: 50px; height: 50px; border: 2px solid rgba(255,255,255,0.35); border-radius: 50%; color: #08110b; background: transparent; font-size: 1.6rem; font-weight: 950; }
+.done-dot.complete { border: 0; background: #44ef82; }
+.add-set { width: 100%; min-height: 58px; margin-top: 18px; border: 1px dashed rgba(255,255,255,0.4); border-radius: 12px; color: #f4f4f4; background: transparent; font-size: 1.15rem; font-weight: 900; }
+.rest-card { display: grid; grid-template-columns: 140px 1fr; align-items: center; }
+.rest-ring { display: grid; place-items: center; width: 106px; height: 106px; border-radius: 50%; background: conic-gradient(#44ef82 75%, rgba(255,255,255,0.14) 0); font-size: 1.7rem; font-weight: 950; }
+.finish-button { --border-radius: 16px; height: 72px; font-size: 1.3rem; font-weight: 950; }
+.screen-title { margin: 10px 0 18px; padding-left: 70px; }
+.guide-hero { min-height: 178px; padding: 22px; display: flex; align-items: end; background-size: cover; background-position: center; }
+.guide-hero h2 { font-size: clamp(2rem, 9vw, 4rem); line-height: 0.95; }
+.guide-grid { display: grid; grid-template-columns: 1fr 0.62fr; gap: 14px; margin-top: 14px; }
+.muscle-card, .equipment-card, .how-card, .mistake-card, .tip-card { padding: 16px; }
+.muscle-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 18px; text-align: center; }
+.muscle-row span::before { content: ''; display: block; height: 74px; margin-bottom: 8px; border-radius: 14px; background: radial-gradient(circle at 50% 30%, rgba(65,238,132,0.9), transparent 26%), linear-gradient(#303030, #0e0e0e); }
+.muscle-row b, .muscle-row em { display: block; }
+.muscle-row em { color: #44ef82; font-style: normal; font-size: 0.85rem; }
+.equipment-card ion-icon, .tip-card ion-icon { color: #d9d9d9; font-size: 4.2rem; margin: 16px 0 8px; }
+.equipment-card span { display: block; color: #cfcfcf; margin-top: 2px; }
+.how-card { display: grid; gap: 12px; margin-top: 14px; }
+.step-row, .mistake-row { display: grid; grid-template-columns: 38px 1fr; align-items: start; gap: 12px; }
+.step-row span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; color: #07120b; background: #44ef82; font-weight: 950; }
+.mistake-row { margin-top: 12px; }
+.mistake-row ion-icon { color: #ff7467; font-size: 1.6rem; }
+.tip-card ion-icon { color: #44ef82; }
+.coach-tip { display: grid; grid-template-columns: 132px 1fr auto; align-items: center; gap: 14px; padding: 12px 16px; margin-top: 14px; border-color: rgba(65,238,132,0.45); background: linear-gradient(135deg, rgba(37,120,68,0.52), rgba(8,9,9,0.92)); }
+.coach-tip img { width: 132px; height: 92px; object-fit: cover; object-position: top center; border-radius: 14px; }
+.coach-tip p { color: #44ef82; font-weight: 800; }
+.coach-tip strong { font-size: 1.4rem; }
+.coach-tip ion-icon { color: #44ef82; font-size: 1.8rem; }
+.hero-panel, .exercise-card, .empty-state, .stat-grid article, .info-row { padding: 18px; }
+.stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }
+.stat-grid span { font-size: 2.2rem; font-weight: 950; }
+.tams-header { display: grid; grid-template-columns: 82px 1fr; gap: 16px; align-items: center; margin-bottom: 20px; }
+.mascot-mark { width: 82px; height: 82px; overflow: hidden; border-radius: 50%; }
+.mascot-mark span { display: none; }
+.mascot-mark::before { content: ''; display: block; width: 100%; height: 100%; background: url('../assets/tams-mascot.png') center / cover; }
+ion-tab-bar { width: min(calc(100% - 28px), 720px); height: 86px; margin: 0 auto 14px; border: 1px solid rgba(255,255,255,0.1); border-radius: 28px; --background: rgba(18,20,19,0.94); backdrop-filter: blur(20px); }
+ion-tab-button { --color: #d0d0d0; --color-selected: #fff; border-radius: 24px; }
+ion-tab-button.tab-selected { background: rgba(255,255,255,0.1); }
+ion-tab-button ion-icon { font-size: 1.7rem; }
+ion-button { --border-radius: 12px; font-weight: 900; }
+@media (max-width: 560px) {
+  .phone-shell { padding-inline: 12px; }
+  .routine-card { grid-template-columns: 120px 1fr; }
+  .kebab { position: absolute; top: 10px; right: 12px; }
+  .start-pill, .view-pill { grid-column: 2; justify-self: start; min-width: 116px; }
+  .routine-meta { gap: 10px; font-size: 0.9rem; }
+  .set-table { grid-template-columns: 38px minmax(88px, 1fr) 74px 58px; gap: 8px; }
+  .set-table > span { font-size: 0.68rem; }
+  .set-row input, .set-row label { min-height: 52px; font-size: 1rem; padding-inline: 10px; }
+  .guide-grid { grid-template-columns: 1fr; }
+  .screen-title { padding-left: 48px; }
+  .coach-tip { grid-template-columns: 96px 1fr; }
+  .coach-tip ion-icon { display: none; }
+  .coach-tip img { width: 96px; }
+}
+
+.home-hero {
+  position: relative;
+  min-height: 240px;
+  padding: 22px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: linear-gradient(150deg, #0d0e0e, #050505);
+}
+
+.home-hero h1 {
+  width: 62%;
+  margin-top: 8px;
+  font-size: clamp(1.9rem, 8vw, 3.8rem);
+  line-height: 0.94;
+  font-weight: 950;
+}
+
+.home-hero img {
+  position: absolute;
+  right: -14px;
+  bottom: 0;
+  width: 58%;
+  max-height: 220px;
+  object-fit: contain;
+}
+
+.white-note {
+  position: absolute;
+  left: 138px;
+  right: 16px;
+  bottom: 24px;
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: #0a0a0a;
+  background: #fff;
+  font-size: 0.86rem;
+}
+
+.white-note span {
+  color: #242424;
+}
+
+.mini-dashboard,
+.quick-grid,
+.feature-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.tiny-stat,
+.quick-grid button,
+.training-load,
+.feature-strip article,
+.calendar-card,
+.load-card,
+.badge-card,
+.recovery-card,
+.session-list,
+.scan-card,
+.food-log,
+.data-card,
+.library-list button {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  background: #111;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.tiny-stat,
+.training-load,
+.feature-strip article,
+.calendar-card,
+.load-card,
+.badge-card,
+.recovery-card,
+.session-list,
+.scan-card,
+.food-log,
+.data-card {
+  padding: 16px;
+}
+
+.tiny-stat strong {
+  display: block;
+  margin-top: 26px;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.tiny-stat span,
+.quick-grid span,
+.training-load p,
+.session-list p,
+.food-log p,
+.data-card p {
+  color: #a7a7a7;
+}
+
+.quick-grid button {
+  display: grid;
+  gap: 10px;
+  min-height: 150px;
+  padding: 18px;
+  color: #fff;
+  text-align: left;
+}
+
+.quick-grid ion-icon,
+.feature-strip ion-icon,
+.data-card ion-icon {
+  color: #fff;
+  font-size: 2.1rem;
+}
+
+.training-load {
+  display: grid;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.training-load > div,
+.calendar-head,
+.badge-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.feature-strip article {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.compact-title {
+  padding-left: 0;
+  text-align: center;
+}
+
+.compact-title h1 {
+  font-size: clamp(2rem, 8vw, 3.2rem);
+}
+
+.no-indent {
+  padding-left: 0;
+}
+
+.calendar-card,
+.load-card,
+.badge-card,
+.recovery-card,
+.session-list,
+.scan-card,
+.food-log,
+.data-card {
+  margin-top: 14px;
+}
+
+.week-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.week-row button {
+  min-height: 72px;
+  border: 0;
+  border-radius: 12px;
+  color: #d8d8d8;
+  background: #1a1a1a;
+}
+
+.week-row button.hot {
+  color: #0b0b0b;
+  background: #fff;
+}
+
+.week-row span,
+.calendar-head span {
+  color: #aaa;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.week-row strong {
+  display: block;
+  margin-top: 6px;
+}
+
+.bar-chart {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: end;
+  gap: 14px;
+  height: 116px;
+  margin-top: 12px;
+}
+
+.bar-chart span {
+  display: block;
+  min-height: 18px;
+  border-radius: 10px 10px 4px 4px;
+  background: #1f1f1f;
+}
+
+.bar-chart span.bright {
+  background: #f4f4f4;
+}
+
+.badge-head h2 {
+  font-size: 1.55rem;
+}
+
+.badge-head span {
+  padding: 8px 10px;
+  border-radius: 999px;
+  color: #eee;
+  background: #1b1b1b;
+  font-size: 0.8rem;
+}
+
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.badge-grid article {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  min-height: 98px;
+  padding: 10px;
+  border-radius: 14px;
+  color: #777;
+  background: #0a0a0a;
+  text-align: center;
+}
+
+.badge-grid article::before {
+  content: '';
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+}
+
+.badge-grid article.earned {
+  color: #f79b32;
+  background: linear-gradient(160deg, #1b120b, #080808);
+}
+
+.badge-grid span {
+  font-size: 0.75rem;
+}
+
+.muscle-map {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 18px 0;
+}
+
+.body-front,
+.body-back {
+  height: 210px;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 50% 20%, #e8e8e8 0 9%, transparent 10%),
+    radial-gradient(circle at 35% 38%, #d6b84a 0 10%, transparent 11%),
+    radial-gradient(circle at 65% 38%, #d6b84a 0 10%, transparent 11%),
+    linear-gradient(90deg, transparent 37%, #48c477 38% 62%, transparent 63%),
+    linear-gradient(#171717, #0a0a0a);
+}
+
+.body-back {
+  background:
+    radial-gradient(circle at 50% 20%, #e8e8e8 0 9%, transparent 10%),
+    radial-gradient(circle at 35% 44%, #48c477 0 12%, transparent 13%),
+    radial-gradient(circle at 65% 44%, #48c477 0 12%, transparent 13%),
+    linear-gradient(90deg, transparent 35%, #48c477 36% 64%, transparent 65%),
+    linear-gradient(#171717, #0a0a0a);
+}
+
+.session-list {
+  display: grid;
+  gap: 10px;
+}
+
+.scan-card {
+  text-align: center;
+}
+
+.scan-frame {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1.55;
+  margin-bottom: 16px;
+  border-radius: 20px;
+  background:
+    linear-gradient(90deg, transparent 18%, rgba(255,255,255,0.9) 18% 20%, transparent 20% 80%, rgba(255,255,255,0.9) 80% 82%, transparent 82%),
+    linear-gradient(#dedede, #bdbdbd);
+}
+
+.scan-frame ion-icon {
+  color: #050505;
+  font-size: 4rem;
+}
+
+.food-log {
+  display: grid;
+  gap: 16px;
+}
+
+.food-log article {
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  align-items: start;
+  gap: 10px;
+  padding-left: 2px;
+}
+
+.food-log article > span {
+  color: #777;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.data-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+.library-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  text-align: left;
+}
+
+.library-head button {
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: #171717;
+}
+
+.library-list {
+  display: grid;
+  gap: 12px;
+}
+
+.library-list button {
+  display: grid;
+  grid-template-columns: 46px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 76px;
+  padding: 12px;
+  color: #fff;
+  text-align: left;
+}
+
+.library-list p {
+  color: #8f8f8f;
+  margin-top: 4px;
+}
+
+.exercise-glyph {
+  width: 34px;
+  height: 48px;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 50% 20%, transparent 0 15%, #777 16% 19%, transparent 20%),
+    linear-gradient(90deg, transparent 42%, #777 43% 57%, transparent 58%);
+  opacity: 0.75;
+}
+
+.text-back {
+  border: 0;
+  color: #d7d7d7;
+  background: transparent;
+  font-weight: 900;
+  text-align: left;
+}
+
+/* TAMS interactions, local data states, and compact controls */
+.routine-card { grid-template-columns: 112px minmax(0,1fr) auto; }
+.routine-card .start-pill { grid-column: 2; justify-self: start; }
+.routine-edit, .back-link { border: 0; padding: 8px 0; color: #d2d2d2; background: transparent; font-weight: 800; text-align:left; }
+.routine-editor { grid-column: 1 / -1; display:grid; gap:10px; padding-top:12px; border-top:1px solid rgba(255,255,255,.12); }
+.routine-editor-title { color:#bbb; font-size:.78rem; font-weight:800; }
+.target-row { display:grid; grid-template-columns:minmax(120px,1.4fr) repeat(4,minmax(46px,.6fr)); align-items:center; gap:7px; }
+.target-row > span { font-size:.85rem; }
+.target-row label { display:grid; gap:4px; color:#999; font-size:.62rem; text-transform:uppercase; }
+.target-row input { width:100%; min-width:0; height:38px; border:1px solid #343735; border-radius:8px; color:#fff; background:#111; padding:5px; }
+.routine-add-row { display:flex; flex-wrap:wrap; gap:6px; }
+.routine-add-row button { border:1px solid #444; border-radius:14px; background:#171918; color:#eee; padding:8px 10px; font-size:.72rem; }
+.timer-actions { display:flex; gap:6px; margin-top:8px; }
+.timer-actions button,.measurement-head button,.meal-heading button { border:1px solid #444; border-radius:12px; color:#fff; background:#191b1a; padding:9px 11px; font-weight:750; }
+.sync-chip { display:flex; align-items:center; gap:5px; border:1px solid #383a39; border-radius:99px; color:#d7d7d7; background:#151716; padding:7px 9px; font-size:.67rem; }
+.sync-chip ion-icon { font-size:1rem; }
+.home-hero h1 em { color:#c7a65c; font-style:normal; }
+.white-note { position:absolute; left:18px; bottom:14px; display:grid; gap:3px; max-width:65%; padding:10px 12px; border-radius:14px; color:#141414; background:#f5f3ec; }
+.white-note span { font-size:.72rem; }
+.quick-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0; }
+.quick-grid button { display:grid; gap:6px; justify-items:start; padding:16px; border:1px solid #292b2a; border-radius:18px; color:#fff; background:#111312; text-align:left; }
+.quick-grid ion-icon { font-size:1.4rem; color:#c7a65c; }
+.quick-grid span { color:#9e9e9e; font-size:.8rem; }
+.nutrition-summary,.scan-card,.meal-card,.measurement-head,.load-card { margin:14px 0; padding:16px; border:1px solid rgba(255,255,255,.12); border-radius:20px; background:linear-gradient(145deg,rgba(26,28,27,.92),rgba(8,9,9,.92)); }
+.nutrition-summary > div:first-child > strong { display:block; margin:8px 0; font-size:1.9rem; }
+.nutrition-summary small { color:#aaa; font-size:.8rem; }
+.macro-grid { display:grid; gap:12px; margin-top:18px; }
+.macro-grid > div { display:grid; grid-template-columns:1fr auto; gap:6px; color:#ddd; }
+.macro-grid .meter { grid-column:1/-1; }
+.meal-heading,.measurement-head { display:flex; align-items:center; justify-content:space-between; }
+.meal-heading h2,.measurement-head h2 { font-size:1.3rem; }
+.meal-heading button { display:flex; align-items:center; gap:5px; }
+.meal-list,.history-list,.measurement-list { display:grid; gap:8px; }
+.meal-card,.info-row { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:0; padding:14px; }
+.meal-card h3 { margin:4px 0; font-size:1rem; }
+.meal-card span,.meal-card p,.info-row p,.info-row span { color:#aaa; font-size:.8rem; }
+.meal-card button { border:0; background:transparent; color:#bbb; font-size:1.15rem; }
+.scan-card { text-align:center; }
+.scan-frame { display:grid; place-items:center; width:100%; height:82px; border:1px dashed #555; border-radius:15px; color:#c7a65c; font-size:2rem; }
+.scan-card h2 { margin:10px 0 5px; }
+.scan-card p { margin:0 auto 12px; max-width:420px; color:#aaa; font-size:.84rem; }
+.scan-card ion-button { --background:#c7a65c; --color:#151515; }
+.bar-chart { height:170px; display:flex; align-items:end; justify-content:space-around; gap:10px; margin-top:14px; padding:8px 4px 0; }
+.chart-day { height:100%; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:end; gap:7px; }
+.chart-day span { width:min(34px,68%); min-height:4px; border-radius:8px 8px 3px 3px; background:#c7a65c; }
+.chart-day small { color:#aaa; font-size:.7rem; }
+.measurement-head { margin-bottom:8px; }
+.library-head { display:flex; align-items:end; justify-content:space-between; }
+.library-head button { border:1px solid #454545; border-radius:50%; width:42px; height:42px; color:#fff; background:#151716; }
+.muscle-filter { display:flex; flex-wrap:wrap; overflow:visible; }
+.muscle-filter button { min-height:38px; padding:0 12px; }
+.empty-state { color:#aaa; text-align:center; }
+.exercise-glyph { display:grid; place-items:center; color:#c7a65c; font-size:1.4rem; }
+.guide-hero { margin:12px 0; }
+@media(max-width:560px){.routine-card{grid-template-columns:82px minmax(0,1fr) auto;gap:10px}.routine-photo{height:82px}.routine-card .start-pill{grid-column:2}.target-row{grid-template-columns:minmax(85px,1fr) repeat(4,minmax(38px,.55fr));gap:4px}.target-row > span{font-size:.72rem}.target-row input{height:34px;font-size:.8rem;padding:3px}.sync-chip{padding:7px}.top-actions{gap:4px}.brand-lockup strong{font-size:1.65rem}}

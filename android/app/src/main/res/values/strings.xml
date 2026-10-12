@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">TAMS</string>
+    <string name="title_activity_main">TAMS</string>
+    <string name="package_name">com.tams.fitness</string>
+    <string name="custom_url_scheme">com.tams.fitness</string>
+</resources>

@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+const root = resolve(process.cwd());
+const html = await readFile(resolve(root, 'dist/index.html'), 'utf8');
+assert.match(html, /TAMS/);
+assert.match(html, /manifest\.webmanifest/);
+assert.match(html, /sw\.js/);
+const worker = await readFile(resolve(root, 'dist/sw.js'), 'utf8');
+assert.match(worker, /tams-shell-v1/);
+const manifest = JSON.parse(await readFile(resolve(root, 'dist/manifest.webmanifest'), 'utf8'));
+assert.equal(manifest.short_name, 'TAMS');
+const schema = await readFile(resolve(root, 'backend/schema.sql'), 'utf8');
+assert.match(schema, /tams_sync_snapshots/);
+const api = await readFile(resolve(root, 'backend/src/server.ts'), 'utf8');
+assert.match(api, /app\.post\('\/sync'/);
+console.log('TAMS smoke checks passed.');

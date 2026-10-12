@@ -1,0 +1,5 @@
+import { useEffect, useState } from 'react';
+import { IonIcon } from '@ionic/react';
+import { cloudDoneOutline, cloudOfflineOutline, cloudUploadOutline } from 'ionicons/icons';
+import { snapshot, subscribe, syncPending } from '../services/tamsStore';
+export default function SyncControl(){const [online,setOnline]=useState(navigator.onLine);const [state,setState]=useState(snapshot());const [busy,setBusy]=useState(false);useEffect(()=>{const update=()=>setOnline(navigator.onLine);window.addEventListener('online',update);window.addEventListener('offline',update);const un=subscribe(()=>setState({...snapshot()}));return()=>{window.removeEventListener('online',update);window.removeEventListener('offline',update);un()}},[]);async function sync(){if(busy)return;setBusy(true);await syncPending();setState({...snapshot()});setBusy(false)}return <button className="sync-chip" onClick={sync} title="Sync app data"><IonIcon icon={!online?cloudOfflineOutline:state.pending?cloudUploadOutline:cloudDoneOutline}/>{!online?'Offline':state.pending?'Sync pending':state.syncedAt?'Synced':'On device'}</button>}
