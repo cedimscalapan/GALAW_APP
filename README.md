@@ -47,4 +47,4 @@ The client uploads its local snapshot to `POST /sync`; local changes stay on dev
 - **Phase 3:** nutrition diary, macro totals, measurements, history, and charts derived from saved data. Demonstrate adding a meal and viewing actual session progress.
 - **Phase 4:** PostgreSQL sync API, offline pending indicator, export/restore, PWA shell, and Android Capacitor project. Demonstrate local edits, online sync, and backup restore.
 
-Photo nutrition estimation is an integration point and needs a configured recognition service; the app explicitly identifies this instead of inventing nutrition results. The supplied golden mascot and white TAMS logo should be installed as `public/assets/mascot-golden.png` and `public/assets/tams-logo-white.png`, respectively, before the official branded app build.
+Photo nutrition estimation is an integration point and needs a configured recognition service; the app explicitly identifies this instead of inventing nutrition results. The official app branding uses only `APPLOGO.png` and `APPMASCOT.png`.

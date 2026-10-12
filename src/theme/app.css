@@ -1,6 +1,6 @@
 * { box-sizing: border-box; }
 body { background: radial-gradient(circle at 30% -10%, rgba(255,255,255,0.12), transparent 30%), linear-gradient(135deg, #080908, #151515 55%, #070807); }
-.tams-screen { --background: radial-gradient(circle at 70% 0%, rgba(30, 215, 96, 0.08), transparent 28%), #050605; }
+.tams-screen { --background: radial-gradient(circle at 70% 0%, rgba(214, 168, 60, 0.10), transparent 28%), #050605; }
 .phone-shell, .page-shell { width: min(100%, 760px); min-height: 100%; margin: 0 auto; padding: 34px 16px 120px; color: #f8f8f6; }
 h1, h2, h3, p { margin: 0; }
 .top-bar { display: flex; align-items: center; gap: 12px; min-height: 54px; }
@@ -28,20 +28,20 @@ h1, h2, h3, p { margin: 0; }
 .mini-photo { width: 118px; height: 84px; }
 .bench-photo { background-image: linear-gradient(90deg, rgba(0,0,0,0.2), rgba(0,0,0,0.72)), url('../assets/exercise-guide-reference.png'); }
 .pull-photo { background-image: linear-gradient(135deg, #363636, #0a0a0a 60%); }
-.leg-photo { background-image: radial-gradient(circle at 70% 30%, rgba(30,215,96,0.28), transparent 28%), linear-gradient(135deg, #252525, #050505 65%); }
+.leg-photo { background-image: radial-gradient(circle at 70% 30%, rgba(214,168,60,0.28), transparent 28%), linear-gradient(135deg, #252525, #050505 65%); }
 .full-photo, .press-photo { background-image: linear-gradient(135deg, #3d3d3d, #0a0a0a 65%); }
 .routine-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 14px; color: #efefef; font-weight: 800; }
 .routine-meta span { display: inline-flex; align-items: center; gap: 6px; }
 .kebab { align-self: start; border: 0; color: #d5d5d5; background: transparent; font-size: 1.8rem; }
 .start-pill, .view-pill { grid-column: 3; --border-radius: 14px; min-width: 132px; font-weight: 950; }
-.view-pill { --color: #41ee84; --border-color: #41ee84; }
+.view-pill { --color: #d6a83c; --border-color: #d6a83c; }
 .floating-add { position: fixed; right: max(22px, calc((100vw - 760px) / 2 + 22px)); bottom: 98px; display: grid; place-items: center; gap: 6px; border: 0; color: #d9d9d9; background: transparent; font-weight: 800; }
-.floating-add ion-icon { width: 76px; height: 76px; padding: 8px; border-radius: 50%; color: #07120b; background: #44ef82; }
+.floating-add ion-icon { width: 76px; height: 76px; padding: 8px; border-radius: 50%; color: #07120b; background: #d6a83c; }
 .active-hero { grid-template-columns: 1fr 42%; min-height: 190px; }
 .progress-panel { display: grid; gap: 14px; padding: 16px; margin-bottom: 16px; }
 .progress-panel > div:first-child { display: flex; justify-content: space-between; gap: 12px; }
 .meter { height: 24px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,0.13); }
-.meter span { display: block; height: 100%; border-radius: inherit; background: #44ef82; }
+.meter span { display: block; height: 100%; border-radius: inherit; background: #d6a83c; }
 .tracker-card { padding: 16px; margin-bottom: 16px; }
 .exercise-line, .collapsed-exercise { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; }
 .collapsed-exercise, .rest-card { padding: 14px; margin-bottom: 16px; }
@@ -54,10 +54,10 @@ h1, h2, h3, p { margin: 0; }
 .set-row label input { min-height: 0; padding: 0; border: 0; background: transparent; }
 .set-row em { color: #aaa; font-style: normal; }
 .done-dot { width: 50px; height: 50px; border: 2px solid rgba(255,255,255,0.35); border-radius: 50%; color: #08110b; background: transparent; font-size: 1.6rem; font-weight: 950; }
-.done-dot.complete { border: 0; background: #44ef82; }
+.done-dot.complete { border: 0; background: #d6a83c; }
 .add-set { width: 100%; min-height: 58px; margin-top: 18px; border: 1px dashed rgba(255,255,255,0.4); border-radius: 12px; color: #f4f4f4; background: transparent; font-size: 1.15rem; font-weight: 900; }
 .rest-card { display: grid; grid-template-columns: 140px 1fr; align-items: center; }
-.rest-ring { display: grid; place-items: center; width: 106px; height: 106px; border-radius: 50%; background: conic-gradient(#44ef82 75%, rgba(255,255,255,0.14) 0); font-size: 1.7rem; font-weight: 950; }
+.rest-ring { display: grid; place-items: center; width: 106px; height: 106px; border-radius: 50%; background: conic-gradient(#d6a83c 75%, rgba(255,255,255,0.14) 0); font-size: 1.7rem; font-weight: 950; }
 .finish-button { --border-radius: 16px; height: 72px; font-size: 1.3rem; font-weight: 950; }
 .screen-title { margin: 10px 0 18px; padding-left: 70px; }
 .guide-hero { min-height: 178px; padding: 22px; display: flex; align-items: end; background-size: cover; background-position: center; }
@@ -65,29 +65,29 @@ h1, h2, h3, p { margin: 0; }
 .guide-grid { display: grid; grid-template-columns: 1fr 0.62fr; gap: 14px; margin-top: 14px; }
 .muscle-card, .equipment-card, .how-card, .mistake-card, .tip-card { padding: 16px; }
 .muscle-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 18px; text-align: center; }
-.muscle-row span::before { content: ''; display: block; height: 74px; margin-bottom: 8px; border-radius: 14px; background: radial-gradient(circle at 50% 30%, rgba(65,238,132,0.9), transparent 26%), linear-gradient(#303030, #0e0e0e); }
+.muscle-row span::before { content: ''; display: block; height: 74px; margin-bottom: 8px; border-radius: 14px; background: radial-gradient(circle at 50% 30%, rgba(214,168,60,0.9), transparent 26%), linear-gradient(#303030, #0e0e0e); }
 .muscle-row b, .muscle-row em { display: block; }
-.muscle-row em { color: #44ef82; font-style: normal; font-size: 0.85rem; }
+.muscle-row em { color: #d6a83c; font-style: normal; font-size: 0.85rem; }
 .equipment-card ion-icon, .tip-card ion-icon { color: #d9d9d9; font-size: 4.2rem; margin: 16px 0 8px; }
 .equipment-card span { display: block; color: #cfcfcf; margin-top: 2px; }
 .how-card { display: grid; gap: 12px; margin-top: 14px; }
 .step-row, .mistake-row { display: grid; grid-template-columns: 38px 1fr; align-items: start; gap: 12px; }
-.step-row span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; color: #07120b; background: #44ef82; font-weight: 950; }
+.step-row span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; color: #07120b; background: #d6a83c; font-weight: 950; }
 .mistake-row { margin-top: 12px; }
 .mistake-row ion-icon { color: #ff7467; font-size: 1.6rem; }
-.tip-card ion-icon { color: #44ef82; }
-.coach-tip { display: grid; grid-template-columns: 132px 1fr auto; align-items: center; gap: 14px; padding: 12px 16px; margin-top: 14px; border-color: rgba(65,238,132,0.45); background: linear-gradient(135deg, rgba(37,120,68,0.52), rgba(8,9,9,0.92)); }
+.tip-card ion-icon { color: #d6a83c; }
+.coach-tip { display: grid; grid-template-columns: 132px 1fr auto; align-items: center; gap: 14px; padding: 12px 16px; margin-top: 14px; border-color: rgba(214,168,60,0.45); background: linear-gradient(135deg, rgba(100,72,24,0.52), rgba(8,9,9,0.92)); }
 .coach-tip img { width: 132px; height: 92px; object-fit: cover; object-position: top center; border-radius: 14px; }
-.coach-tip p { color: #44ef82; font-weight: 800; }
+.coach-tip p { color: #d6a83c; font-weight: 800; }
 .coach-tip strong { font-size: 1.4rem; }
-.coach-tip ion-icon { color: #44ef82; font-size: 1.8rem; }
+.coach-tip ion-icon { color: #d6a83c; font-size: 1.8rem; }
 .hero-panel, .exercise-card, .empty-state, .stat-grid article, .info-row { padding: 18px; }
 .stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }
 .stat-grid span { font-size: 2.2rem; font-weight: 950; }
 .tams-header { display: grid; grid-template-columns: 82px 1fr; gap: 16px; align-items: center; margin-bottom: 20px; }
 .mascot-mark { width: 82px; height: 82px; overflow: hidden; border-radius: 50%; }
 .mascot-mark span { display: none; }
-.mascot-mark::before { content: ''; display: block; width: 100%; height: 100%; background: url('../assets/tams-mascot.png') center / cover; }
+.mascot-mark::before { content: ''; display: block; width: 100%; height: 100%; background: url('/assets/APPLOGO.png') center / cover; }
 ion-tab-bar { width: min(calc(100% - 28px), 720px); height: 86px; margin: 0 auto 14px; border: 1px solid rgba(255,255,255,0.1); border-radius: 28px; --background: rgba(18,20,19,0.94); backdrop-filter: blur(20px); }
 ion-tab-button { --color: #d0d0d0; --color-selected: #fff; border-radius: 24px; }
 ion-tab-button.tab-selected { background: rgba(255,255,255,0.1); }
@@ -387,16 +387,16 @@ ion-button { --border-radius: 12px; font-weight: 900; }
     radial-gradient(circle at 50% 20%, #e8e8e8 0 9%, transparent 10%),
     radial-gradient(circle at 35% 38%, #d6b84a 0 10%, transparent 11%),
     radial-gradient(circle at 65% 38%, #d6b84a 0 10%, transparent 11%),
-    linear-gradient(90deg, transparent 37%, #48c477 38% 62%, transparent 63%),
+    linear-gradient(90deg, transparent 37%, #d6a83c 38% 62%, transparent 63%),
     linear-gradient(#171717, #0a0a0a);
 }
 
 .body-back {
   background:
     radial-gradient(circle at 50% 20%, #e8e8e8 0 9%, transparent 10%),
-    radial-gradient(circle at 35% 44%, #48c477 0 12%, transparent 13%),
-    radial-gradient(circle at 65% 44%, #48c477 0 12%, transparent 13%),
-    linear-gradient(90deg, transparent 35%, #48c477 36% 64%, transparent 65%),
+    radial-gradient(circle at 35% 44%, #d6a83c 0 12%, transparent 13%),
+    radial-gradient(circle at 65% 44%, #d6a83c 0 12%, transparent 13%),
+    linear-gradient(90deg, transparent 35%, #d6a83c 36% 64%, transparent 65%),
     linear-gradient(#171717, #0a0a0a);
 }
 
@@ -562,3 +562,4 @@ ion-button { --border-radius: 12px; font-weight: 900; }
 .exercise-glyph { display:grid; place-items:center; color:#c7a65c; font-size:1.4rem; }
 .guide-hero { margin:12px 0; }
 @media(max-width:560px){.routine-card{grid-template-columns:82px minmax(0,1fr) auto;gap:10px}.routine-photo{height:82px}.routine-card .start-pill{grid-column:2}.target-row{grid-template-columns:minmax(85px,1fr) repeat(4,minmax(38px,.55fr));gap:4px}.target-row > span{font-size:.72rem}.target-row input{height:34px;font-size:.8rem;padding:3px}.sync-chip{padding:7px}.top-actions{gap:4px}.brand-lockup strong{font-size:1.65rem}}
+
