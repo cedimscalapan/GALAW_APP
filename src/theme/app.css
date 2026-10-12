@@ -563,3 +563,273 @@ ion-button { --border-radius: 12px; font-weight: 900; }
 .guide-hero { margin:12px 0; }
 @media(max-width:560px){.routine-card{grid-template-columns:82px minmax(0,1fr) auto;gap:10px}.routine-photo{height:82px}.routine-card .start-pill{grid-column:2}.target-row{grid-template-columns:minmax(85px,1fr) repeat(4,minmax(38px,.55fr));gap:4px}.target-row > span{font-size:.72rem}.target-row input{height:34px;font-size:.8rem;padding:3px}.sync-chip{padding:7px}.top-actions{gap:4px}.brand-lockup strong{font-size:1.65rem}}
 
+/* Unified TAMS visual system */
+:root {
+  --tams-bg: #050505;
+  --tams-panel: #11100e;
+  --tams-panel-2: #191612;
+  --tams-line: rgba(255,255,255,0.12);
+  --tams-muted: #aaa39a;
+  --tams-gold: #d6a83c;
+  --tams-gold-2: #f0c96b;
+  --tams-white: #f7f4ec;
+}
+
+.tams-screen {
+  --background:
+    radial-gradient(circle at 80% -10%, rgba(214,168,60,0.16), transparent 30%),
+    radial-gradient(circle at 0% 20%, rgba(255,255,255,0.06), transparent 22%),
+    var(--tams-bg);
+}
+
+.phone-shell {
+  max-width: 430px;
+  padding: 24px 14px 112px;
+}
+
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin: -8px -2px 14px;
+  padding: 8px 2px;
+  background: linear-gradient(180deg, rgba(5,5,5,0.96), rgba(5,5,5,0.72));
+  backdrop-filter: blur(18px);
+}
+
+.brand-lockup img,
+.avatar {
+  object-fit: cover;
+  background: #020202;
+  box-shadow: 0 0 0 2px rgba(214,168,60,0.2), 0 10px 26px rgba(0,0,0,0.35);
+}
+
+.brand-lockup strong {
+  color: var(--tams-white);
+  text-shadow: 0 1px 18px rgba(214,168,60,0.22);
+}
+
+.icon-button,
+.sync-chip {
+  border: 1px solid var(--tams-line);
+  background: linear-gradient(145deg, #181613, #070707);
+}
+
+.section-label {
+  color: var(--tams-gold-2);
+}
+
+.home-hero,
+.routine-hero,
+.active-hero,
+.guide-hero,
+.nutrition-hero,
+.app-hero {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(214,168,60,0.2);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 86% 18%, rgba(214,168,60,0.25), transparent 27%),
+    linear-gradient(145deg, #181511, #050505 70%);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.38), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.home-hero::after,
+.routine-hero::after,
+.active-hero::after,
+.guide-hero::after,
+.nutrition-hero::after,
+.app-hero::after {
+  content: '';
+  position: absolute;
+  inset: auto -40px -70px 42%;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(214,168,60,0.18), transparent 68%);
+  pointer-events: none;
+}
+
+.home-hero img,
+.routine-hero img,
+.active-hero img,
+.nutrition-hero img,
+.guide-hero img {
+  z-index: 1;
+  filter: drop-shadow(0 20px 28px rgba(0,0,0,0.55));
+}
+
+.routine-hero,
+.active-hero,
+.guide-hero,
+.nutrition-hero,
+.app-hero {
+  margin: 12px 0 16px;
+  padding: 18px;
+}
+
+.nutrition-hero,
+.app-hero {
+  display: grid;
+  grid-template-columns: 1fr 108px;
+  gap: 12px;
+  align-items: center;
+  min-height: 152px;
+  text-align: left;
+}
+
+.nutrition-hero img,
+.app-hero img {
+  width: 118px;
+  max-height: 132px;
+  object-fit: contain;
+}
+
+.app-hero > button {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  color: #100d08;
+  background: var(--tams-gold);
+}
+
+.app-hero h1,
+.nutrition-hero h1 {
+  font-size: clamp(2.15rem, 9vw, 3.4rem);
+  line-height: 0.9;
+}
+
+.routine-card,
+.tracker-card,
+.collapsed-exercise,
+.rest-card,
+.progress-panel,
+.muscle-card,
+.equipment-card,
+.how-card,
+.mistake-card,
+.tip-card,
+.coach-tip,
+.exercise-card,
+.empty-state,
+.stat-grid article,
+.info-row,
+.tiny-stat,
+.quick-grid button,
+.training-load,
+.feature-strip article,
+.calendar-card,
+.load-card,
+.badge-card,
+.recovery-card,
+.session-list,
+.scan-card,
+.food-log,
+.data-card,
+.nutrition-summary,
+.meal-card,
+.measurement-head {
+  border-color: rgba(214,168,60,0.14);
+  background:
+    linear-gradient(145deg, rgba(26,23,18,0.96), rgba(8,8,8,0.96)),
+    var(--tams-panel);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 14px 34px rgba(0,0,0,0.22);
+}
+
+.segmented {
+  border-color: rgba(214,168,60,0.2);
+  background: #0d0c0a;
+}
+
+.segmented button.active {
+  color: #100d08;
+  background: linear-gradient(135deg, var(--tams-gold-2), var(--tams-gold));
+}
+
+ion-button.finish-button,
+.finish-button {
+  --background: linear-gradient(135deg, var(--tams-gold-2), var(--tams-gold));
+  --color: #100d08;
+  --box-shadow: 0 18px 38px rgba(214,168,60,0.22);
+}
+
+.start-pill,
+.scan-card ion-button {
+  --background: linear-gradient(135deg, var(--tams-gold-2), var(--tams-gold));
+  --color: #100d08;
+}
+
+.floating-add ion-icon,
+.done-dot.complete,
+.step-row span,
+.meter span,
+.chart-day span {
+  background: linear-gradient(180deg, var(--tams-gold-2), var(--tams-gold));
+}
+
+.done-dot.complete {
+  color: #100d08;
+}
+
+.bar-chart {
+  padding: 14px 10px 0;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.12));
+}
+
+.library-list button,
+.meal-card,
+.info-row {
+  border-color: rgba(214,168,60,0.14);
+}
+
+.exercise-glyph {
+  background:
+    radial-gradient(circle at 50% 25%, rgba(214,168,60,0.28), transparent 38%),
+    #0c0b09;
+}
+
+ion-searchbar {
+  --background: #11100e;
+  --color: var(--tams-white);
+  --placeholder-color: var(--tams-muted);
+  --icon-color: var(--tams-gold);
+  --border-radius: 18px;
+  padding-inline: 0;
+}
+
+ion-tab-bar {
+  border-color: rgba(214,168,60,0.22);
+  --background: rgba(10,9,8,0.96);
+}
+
+ion-tab-button.tab-selected {
+  color: var(--tams-gold-2);
+  background: rgba(214,168,60,0.12);
+}
+
+.white-note {
+  background: linear-gradient(135deg, #fffaf0, #e9d59c);
+}
+
+@media (max-width: 430px) {
+  .home-hero img {
+    width: 64%;
+    right: -34px;
+  }
+
+  .nutrition-hero,
+  .app-hero {
+    grid-template-columns: 1fr 92px;
+  }
+
+  .nutrition-hero img,
+  .app-hero img {
+    width: 96px;
+  }
+}
+
