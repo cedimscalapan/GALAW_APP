@@ -19,6 +19,18 @@ npm run mobile:android
 
 The `android` project is a Capacitor Android shell. iOS packaging requires macOS with Xcode. Install a PWA by serving the production build over HTTPS; the service worker caches the app shell and same-origin assets.
 
+## Download and install from GitHub
+
+Every push to `main` builds an installable Android debug APK through GitHub Actions.
+
+1. Open the GitHub repository.
+2. Go to **Actions**.
+3. Open the latest **Build Android APK** workflow run.
+4. Download the artifact named **TAMS-android-debug-apk**.
+5. Extract the ZIP file and install `app-debug.apk` on an Android phone.
+
+Android may ask you to allow installation from unknown sources. This debug APK is for testing and project checking. For Play Store release, create a signed release APK or AAB with your own signing key.
+
 ## Configure online sync
 
 1. Create a PostgreSQL database and apply `backend/schema.sql`.
