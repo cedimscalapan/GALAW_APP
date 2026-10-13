@@ -816,6 +816,129 @@ ion-tab-button.tab-selected {
   background: linear-gradient(135deg, #fffaf0, #e9d59c);
 }
 
+.routine-builder,
+.workout-summary,
+.history-panel {
+  display: grid;
+  gap: 12px;
+  margin: 14px 0;
+  padding: 16px;
+  border: 1px solid rgba(214,168,60,0.14);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(26,23,18,0.96), rgba(8,8,8,0.96));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 14px 34px rgba(0,0,0,0.22);
+}
+
+.routine-builder input,
+.routine-builder select,
+.routine-name-row input,
+.routine-name-row select {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  border: 1px solid rgba(214,168,60,0.18);
+  border-radius: 12px;
+  color: var(--tams-white);
+  background: #0d0c0a;
+  padding: 0 12px;
+  font-weight: 800;
+}
+
+.routine-builder button,
+.history-panel button,
+.routine-card-actions button,
+.small-danger {
+  min-height: 38px;
+  border: 1px solid rgba(214,168,60,0.2);
+  border-radius: 12px;
+  color: var(--tams-white);
+  background: #151310;
+  padding: 8px 10px;
+  font-weight: 850;
+}
+
+.routine-builder button {
+  color: #100d08;
+  background: linear-gradient(135deg, var(--tams-gold-2), var(--tams-gold));
+}
+
+.routine-card-actions {
+  display: flex;
+  gap: 6px;
+  align-self: start;
+}
+
+.routine-card-actions button {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+}
+
+.small-danger {
+  color: #ffd6d6;
+  border-color: rgba(255,101,101,0.28);
+  background: rgba(255,101,101,0.08);
+}
+
+.small-danger.icon-only {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+}
+
+.workout-actions,
+.finish-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.finish-row {
+  grid-template-columns: auto 1fr;
+  margin-bottom: 16px;
+}
+
+.workout-summary {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  border-color: rgba(214,168,60,0.32);
+}
+
+.workout-summary ion-icon {
+  color: var(--tams-gold);
+  font-size: 2rem;
+}
+
+.history-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.history-card p,
+.history-card span {
+  color: var(--tams-muted);
+  font-size: 0.82rem;
+}
+
+.routine-name-row {
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  gap: 8px;
+}
+
+.target-row {
+  grid-template-columns: minmax(120px,1.4fr) repeat(4,minmax(46px,.6fr)) auto;
+}
+
 @media (max-width: 430px) {
   .home-hero img {
     width: 64%;
@@ -830,6 +953,22 @@ ion-tab-button.tab-selected {
   .nutrition-hero img,
   .app-hero img {
     width: 96px;
+  }
+
+  .routine-name-row,
+  .workout-actions,
+  .finish-row,
+  .workout-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .target-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .target-row > span,
+  .target-row .small-danger {
+    grid-column: 1 / -1;
   }
 }
 
