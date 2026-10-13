@@ -35,6 +35,7 @@ import {
   type Routine,
   type Workout as WorkoutType,
 } from '../services/tamsStore';
+import { getExerciseGif } from '../utils/exerciseVisuals';
 
 const categories = ['All', 'Upper Body', 'Lower Body', 'Full Body'];
 const categoryChoices = ['Upper Body', 'Lower Body', 'Full Body'];
@@ -144,10 +145,11 @@ export default function Workout() {
 
               {active.exercises.map((ex, i) => {
                 const item = state.exercises.find((e) => e.id === ex.exerciseId);
+                const visual = getExerciseGif(ex.exerciseId);
                 return (
                   <section className="tracker-card" key={ex.exerciseId}>
                     <div className="exercise-line">
-                      <div className="mini-photo bench-photo" />
+                      {visual ? <img className="mini-photo exercise-motion" src={visual} alt={`${item?.name ?? 'Exercise'} form animation`} /> : <div className="mini-photo bench-photo" />}
                       <div>
                         <h2>{i + 1}. {item?.name ?? 'Exercise'}</h2>
                         <p>{item?.muscle} | {item?.equipment}</p>

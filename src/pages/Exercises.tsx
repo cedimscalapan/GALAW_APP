@@ -3,6 +3,7 @@ import { IonContent, IonIcon, IonPage, IonSearchbar } from '@ionic/react';
 import { addOutline, barbellOutline, chevronForwardOutline } from 'ionicons/icons';
 import AppTopBar from '../components/AppTopBar';
 import { createExercise, snapshot, subscribe, type Exercise } from '../services/tamsStore';
+import { getExerciseGif } from '../utils/exerciseVisuals';
 
 export default function Exercises() {
   const [state, setState] = useState(snapshot());
@@ -47,7 +48,7 @@ export default function Exercises() {
                   <p className="section-label">{selected.muscle} | {selected.equipment}</p>
                   <h2>{selected.name}</h2>
                 </div>
-                <img src="/assets/APPMASCOT.png" alt="TAMS coach" />
+                <img src={getExerciseGif(selected.id) ?? '/assets/APPMASCOT.png'} alt={`${selected.name} form animation`} />
               </section>
               <section className="how-card">
                 <p className="section-label">HOW TO</p>
@@ -85,7 +86,7 @@ export default function Exercises() {
                 {visible.map((ex) => (
                   <button key={ex.id} onClick={() => setSelected(ex)}>
                     <span className="exercise-glyph">
-                      <IonIcon icon={barbellOutline} />
+                      {getExerciseGif(ex.id) ? <img src={getExerciseGif(ex.id)} alt="" /> : <IonIcon icon={barbellOutline} />}
                     </span>
                     <div>
                       <strong>{ex.name}</strong>

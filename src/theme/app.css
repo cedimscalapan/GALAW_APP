@@ -816,6 +816,41 @@ ion-tab-button.tab-selected {
   background: linear-gradient(135deg, #fffaf0, #e9d59c);
 }
 
+.exercise-motion,
+.exercise-glyph img,
+.guide-hero > img {
+  object-fit: cover;
+  background: #070707;
+  border: 1px solid rgba(214,168,60,0.18);
+}
+
+.exercise-motion {
+  display: block;
+}
+
+.exercise-glyph {
+  overflow: hidden;
+}
+
+.exercise-glyph img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.guide-hero {
+  display: grid;
+  grid-template-columns: 1fr minmax(132px, 180px);
+  gap: 14px;
+  align-items: center;
+}
+
+.guide-hero > img {
+  width: 100%;
+  height: 138px;
+  border-radius: 18px;
+}
+
 .routine-builder,
 .workout-summary,
 .history-panel {
@@ -953,6 +988,10 @@ ion-tab-button.tab-selected {
   .nutrition-hero img,
   .app-hero img {
     width: 96px;
+  }
+
+  .guide-hero {
+    grid-template-columns: 1fr;
   }
 
   .routine-name-row,
